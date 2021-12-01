@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version "2.6.0"
+    id 'io.spring.dependency-management' version "1.0.11.RELEASE"
+}
+
+apply plugin: 'java'
+apply from: "libraries.gradle"
+apply from: "kotlin.gradle"
+
+group = 'package.api'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+
+dependencies {
+    compile libpacks.spring
+    compile libpacks.swagger
+    compile libpacks.minio
+    compile libpacks.utils
+    //Lombok
+    compileOnly libpacks.lombok
+    annotationProcessor libpacks.lombok
+
+    compile libpacks.logging
+    testCompile libpacks.testing
+}
+
